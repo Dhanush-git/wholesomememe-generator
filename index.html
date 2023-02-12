@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Wholesome meme gen</title>
+</head>
+<body>
+
+    <div class="page-width">
+        <div class="container flex">
+            <div class="preview-container flex-item">
+                <div class="preview" id="image-preview">
+                    <img src="mrfrog.jpg" alt="mrfrog">
+                    <div id="img-heading" class="image-content"></div>
+                    <div id="img-subheading" class="image-content"></div>
+                </div>
+            </div>
+            <div class="editor-container flex-item">
+                <label for="heading">Heading</label>
+                <input type="text" name="heading" id="input-heading" class="editor-input" placeholder="Heading" value="Gentlemen, it is with great pleasure to inform you that">
+                <label for="subheading">Sub heading</label>
+                <input type="text" name="subheading" id="input-subheading" class="editor-input" placeholder="Subheading" value="I drunk coded wholesome mene generator">
+                <div>
+                    <button id="download" class="btn-download" onclick="downloadImage()">
+                        <i data-feather="download"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./dom-to-image.js"></script>
+    <script>
+        feather.replace()
+
+        function handleChange(){
+            let heading = document.querySelector('input[name="heading"]').value;
+            let subHeading = document.querySelector('input[name="subheading"]').value;
+
+            document.querySelector("#img-heading").innerHTML = heading;
+            document.querySelector("#img-subheading").innerHTML = subHeading;
+        }
+
+        function downloadImage() {
+            domtoimage.toJpeg(document.getElementById('image-preview'), { quality: 0.95 })
+            .then(function (dataUrl) {
+                var link = document.createElement('a');
+                link.download = 'wholesomememe.jpeg';
+                link.href = dataUrl;
+                link.click();
+            });
+        }
+
+        handleChange()
+
+        document.querySelectorAll('.editor-input').forEach((input)=>{
+            input.addEventListener('keyup',()=>{
+                handleChange()
+            })
+        })
+
+    </script>
+</body>
+</html>
