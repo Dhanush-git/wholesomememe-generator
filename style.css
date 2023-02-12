@@ -9,6 +9,10 @@ html,body{
     font-family: 'Archivo Black';
     src: url('./ArchivoBlack-Regular.ttf');
 }
+.page-width{
+    max-width: 768px;
+    margin: 0px auto;
+}
 .flex{
     display: flex;
     flex-wrap: wrap;
