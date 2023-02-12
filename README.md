@@ -1,3 +1,3 @@
 # Wholesome meme generator
 
-![MR.frog](/wholesomememe.jpeg?raw=true)
+![MR.frog](/wholesomememe.jpeg)
